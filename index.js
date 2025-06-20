@@ -11,8 +11,11 @@ app.use(express.json());
 
 //Set Cookie
 app.get('/set-cookie', (req, res) => {
-  res.cookie('username', 'Saurabh', { httpOnly: true });
-  // res.cookie('username', 'Saurabh');
+  res.cookie('username', 'Saurabh', {
+  httpOnly: true,
+  secure: true,          // Required for HTTPS
+  sameSite: 'None'       // Required for cross-site cookies
+});
   res.status(200).json({ message: 'Cookie set!' });
 });
 
